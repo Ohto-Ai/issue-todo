@@ -42,7 +42,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IssueComment.hpp">
+    <ClInclude Include="IssueKeyPointer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -100,23 +100,59 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>inc; %(AdditionalIncludeDirectories);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>inc; inc/$(PlatformTarget);  %(AdditionalIncludeDirectories);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CPPHTTPLIB_OPENSSL_SUPPORT;  $(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>libcrypto.lib; libssl.lib; %(AdditionalDependencies);$(Qt_LIBS_)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>lib/$(LibrariesArchitecture); %(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)lib\$(PlatformTarget)\*.dll" "$(TargetDir)"</Command>
+      <Message>复制dll</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>inc; </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>inc; inc/$(PlatformTarget);  </AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CPPHTTPLIB_OPENSSL_SUPPORT;  </PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>libcrypto.lib; libssl.lib; $(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>lib/$(LibrariesArchitecture); %(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)lib\$(PlatformTarget)\*.dll" "$(TargetDir)"</Command>
+      <Message>复制dll</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>inc; %(AdditionalIncludeDirectories);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>inc; inc/$(PlatformTarget);  %(AdditionalIncludeDirectories);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CPPHTTPLIB_OPENSSL_SUPPORT;  $(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>libcrypto.lib; libssl.lib; %(AdditionalDependencies);$(Qt_LIBS_)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>lib/$(LibrariesArchitecture); %(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)lib\$(PlatformTarget)\*.dll" "$(TargetDir)"</Command>
+      <Message>复制dll</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>inc; </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>inc; inc/$(PlatformTarget);  </AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CPPHTTPLIB_OPENSSL_SUPPORT;  </PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>libcrypto.lib; libssl.lib; $(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>lib/$(LibrariesArchitecture); %(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)lib\$(PlatformTarget)\*.dll" "$(TargetDir)"</Command>
+      <Message>复制dll</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="Configuration">
     <ClCompile>
@@ -178,7 +214,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IssueComment.hpp" />
+    <ClInclude Include="IssueKeyPointer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
