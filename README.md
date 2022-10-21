@@ -1,2 +1,3 @@
 # issue-todo
-从指定仓库的issue中读取task，并在本地展示
+
+runner轮询github 或 从服务器处获取issue信息/任务信息，执行后，回复issue/返回执行结果给服务器
